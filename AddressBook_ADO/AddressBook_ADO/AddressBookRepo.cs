@@ -185,6 +185,36 @@ namespace AddressBook_ADO
             connection.Close();
             return (addressmodel.Address);
         }
+        public bool DeleteContact(AddressBookModel model)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand cmd = new SqlCommand("[SpAddressBook_Delete]", this.connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@FirstName", model.FirstName);
+                    this.connection.Open();
+                    var result = cmd.ExecuteNonQuery();
+                    this.connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return false;
+        }
+
     }
 }
 

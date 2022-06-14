@@ -5,7 +5,7 @@ Console.WriteLine("Welcome To Address Book ADO");
 AddressBookADO address = new();
 while (true)
 {
-    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values to Table\n4)Retrieve values from Table\n6)Update details of Contact");
+    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values to Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contacts");
     int option = Convert.ToInt16(Console.ReadLine());
     switch (option)
     {
@@ -43,10 +43,18 @@ while (true)
             addressbook1.EmailId = "roshni@gmail.com";
             address.UpdateContact(addressbook1);
             Console.WriteLine("Record Updated successfully");
+            Console.WriteLine();
             break;
         case 6:
             string UpdatedAddress = address.UpdateEmployeeDetails();
             Console.WriteLine(UpdatedAddress);
+            break;
+        case 7:
+            AddressBookModel addressbook2 = new AddressBookModel();
+            addressbook2.FirstName = "Priya";
+            address.DeleteContact(addressbook2);
+            Console.WriteLine("Record Deleted successfully");
+            Console.WriteLine();
             break;
         default:
             Console.WriteLine("Please choose correct option");

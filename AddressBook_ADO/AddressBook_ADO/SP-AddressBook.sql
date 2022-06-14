@@ -37,4 +37,12 @@ SET NOCOUNT ON;
 SELECT FirstName,LastName,Address,City,State,@ZipCode,PhoneNumber,@EmailId from PersonContact
 END
 GO
-Select Address from PersonContact where FirstName='Roshni'
+
+Alter procedure [SpAddressBook_Delete]
+(
+	@FirstName varchar(50)
+)
+as
+begin
+Delete from PersonContact where FirstName = @FirstName;
+End
