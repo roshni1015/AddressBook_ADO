@@ -136,6 +136,7 @@ namespace AddressBook_ADO
             object res = command.ExecuteScalar();
             connection.Close();
         }
+       
         public bool UpdateContact(AddressBookModel model)
         {
             try
@@ -370,6 +371,62 @@ namespace AddressBook_ADO
                                 addressmodel.PhoneNumber + " " +
                                 addressmodel.EmailId + " "
                                 );
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        public int CountOfEmployeeDetailsByType()
+        {
+            int count;
+            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-RLUTTHG1; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string Query = @"Select count(*) from PersonContact where Type='Family';";
+            SqlCommand command = new SqlCommand(Query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
+            int Count = (int)res;
+            return Count;
+        }
+        public void GetContactsBYAddressBookType()
+        {
+            try
+            {
+                AddressBookModel addressmodel = new AddressBookModel();
+                SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-RLUTTHG1; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+                using (this.connection)
+                {
+                    string Query = @"Select * from PersonContact where Type='Friend';";
+                    SqlCommand cmd = new SqlCommand(Query, this.connection);
+                    this.connection.Open();
+                    SqlDataReader datareader = cmd.ExecuteReader();
+                    if (datareader.HasRows)
+                    {
+                        while (datareader.Read())
+                        {
+                            addressmodel.AddressBookId = datareader.GetInt32(0);
+                            addressmodel.FirstName = datareader.GetString(1);
+                            addressmodel.LastName = datareader.GetString(2);
+                            addressmodel.Address = datareader.GetString(3);
+                            addressmodel.City = datareader.GetString(4);
+                            addressmodel.State = datareader.GetString(5);
+                            addressmodel.ZipCode = datareader.GetString(6);
+                            addressmodel.PhoneNumber = datareader.GetString(7);
+                            addressmodel.EmailId = datareader.GetString(8);
+                            Console.WriteLine("AddressBookId : " + addressmodel.AddressBookId);
+                            Console.WriteLine("FirstName : " + addressmodel.FirstName);
+                            Console.WriteLine("LastName : " + addressmodel.LastName);
+                            Console.WriteLine("Address : " + addressmodel.Address);
+                            Console.WriteLine("City : " + addressmodel.City);
+                            Console.WriteLine("State : " + addressmodel.State);
+                            Console.WriteLine("ZipCode : " + addressmodel.ZipCode);
+                            Console.WriteLine("PhoneNumber : " + addressmodel.PhoneNumber);
+                            Console.WriteLine("EmailId : " + addressmodel.EmailId);
+                            Console.WriteLine();
                         }
                     }
                 }
