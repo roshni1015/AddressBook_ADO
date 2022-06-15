@@ -5,7 +5,7 @@ Console.WriteLine("Welcome To Address Book ADO");
 AddressBookADO address = new();
 while (true)
 {
-    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values to Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contacts");
+    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values to Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contacts\n8)Count Of Records by City or State");
     int option = Convert.ToInt16(Console.ReadLine());
     switch (option)
     {
@@ -55,6 +55,12 @@ while (true)
             address.DeleteContact(addressbook2);
             Console.WriteLine("Record Deleted successfully");
             Console.WriteLine();
+            break;
+        case 8:
+            int countCity = address.CountOfEmployeeDetailsByCity();
+            Console.WriteLine("Count of Records by City= Pune :" + countCity);
+            int CountState = address.CountOfEmployeeDetailsByState();
+            Console.WriteLine("Count of Records by State= Maharastra :" + CountState);
             break;
         default:
             Console.WriteLine("Please choose correct option");

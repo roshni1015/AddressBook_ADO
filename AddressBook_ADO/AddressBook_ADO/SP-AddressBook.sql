@@ -40,7 +40,7 @@ GO
 
 Alter procedure [SpAddressBook_Delete]
 (
-	@FirstName varchar(50)
+	@FirstName varchar(20)
 )
 as
 begin

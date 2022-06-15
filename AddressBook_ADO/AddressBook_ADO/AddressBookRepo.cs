@@ -132,7 +132,7 @@ namespace AddressBook_ADO
             try
             {
 
-                SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-RLUTTHG1; Initial Catalog =master; Integrated Security = True;");
+                SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-RLUTTHG1; Initial Catalog =AddressBookForADO; Integrated Security = True;");
 
                 using (this.connection)
                 {
@@ -169,7 +169,7 @@ namespace AddressBook_ADO
        
         public string UpdateEmployeeDetails()
         {
-            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-2UH1FDRP\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-RLUTTHG1; Initial Catalog =AddressBookForADO; Integrated Security = True;");
             connection.Open();
             SqlCommand command = new SqlCommand("Update PersonContact set Address='H.T. Colony' where FirstName='Roshni'", connection);
             AddressBookModel addressmodel = new AddressBookModel();
@@ -213,6 +213,30 @@ namespace AddressBook_ADO
                 this.connection.Close();
             }
             return false;
+        }
+        public int CountOfEmployeeDetailsByCity()
+        {
+            int count;
+            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-RLUTTHG1; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string query = @"Select count(*) from AddressBook where City='Pune';";
+            SqlCommand command = new SqlCommand(query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
+            int Count = (int)res;
+            return Count;
+        }
+        public int CountOfEmployeeDetailsByState()
+        {
+            int count;
+            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-RLUTTHG1; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string query = @"Select count(*) from AddressBook where State='AP';";
+            SqlCommand command = new SqlCommand(query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
+            int Count = (int)res;
+            return Count;
         }
 
     }
