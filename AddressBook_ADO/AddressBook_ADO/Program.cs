@@ -5,7 +5,7 @@ Console.WriteLine("Welcome To Address Book ADO");
 AddressBookADO address = new();
 while (true)
 {
-    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values to Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contacts\n8)Count Of Records by City or State\n9)Get Records by City\n10)Get Records by State\n11)Alphabetically Sorted for given city ");
+    Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values to Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contacts\n8)Count Of Records by City or State\n9)Get Records by City\n10)Get Records by State\n11)Alphabetically Sorted for given city\n12)Adding AddressBookName and AddressBookType");
     int option = Convert.ToInt16(Console.ReadLine());
     switch (option)
     {
@@ -94,6 +94,12 @@ while (true)
             Console.WriteLine("Get Contacts by City name in Alphabetical Order");
             Console.WriteLine("---------------------------------------------------------------------------------------------");
             address.GetAllContactsInAlphbeticalOrderByCity();
+            Console.WriteLine();
+            Console.WriteLine("********************************************************************************************************");
+            break;
+        case 12:
+            Console.WriteLine("Adding Two Columns AddressBookName and AddressBookType");
+            address.AddAddressBookNameAndType();
             Console.WriteLine();
             Console.WriteLine("********************************************************************************************************");
             break;

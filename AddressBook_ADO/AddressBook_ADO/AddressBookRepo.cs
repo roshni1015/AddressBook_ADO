@@ -127,6 +127,15 @@ namespace AddressBook_ADO
                 Console.WriteLine(e.Message);
             }
         }
+        public void AddAddressBookNameAndType()
+        {
+            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-RLUTTHG1; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string query = @"alter table PersonContact add AddressBookName Varchar(50), Type Varchar(50);";
+            SqlCommand command = new SqlCommand(query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
+        }
         public bool UpdateContact(AddressBookModel model)
         {
             try
