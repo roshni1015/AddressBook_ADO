@@ -436,6 +436,16 @@ namespace AddressBook_ADO
                 Console.WriteLine(e.Message);
             }
         }
+        public void AddContactAsFriendAndFamily()
+        {
+            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-RLUTTHG1; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string query = @"Insert into PersonContact Values ('Vivek','Adatrao','V.T. Colony','Mumbai','Maharastra'','123455','9988776654','Vivek@gmail.com','School','Friend'),
+                            ('Pradnya','Patil','P.L. Colony','Pune','Maharastra','543214','8866779955','Pradnya@gmail.com','School','Family');";
+            SqlCommand command = new SqlCommand(query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
+        }
 
     }
 }
