@@ -10,8 +10,7 @@ while (true)
 {
     Console.WriteLine("Choose the option :\n1)Create a Database\n2)Create table in DB\n3)Insert Values to Table\n4)Retrieve values from Table\n6)Update details of Contact\n7)Delete Contacts\n8)Count Of Records by City or State\n9)Get Records by City\n10)Get Records by State\n11)Alphabetically Sorted for given city\n12)Adding AddressBookName and AddressBookType\n13)Get contact by Type\n14)Count By AddressBookType\n15)Add Same person as Friend and Family" +
         "\n16)Display of PersonDetail1\n17)Display of Address_Book1\n18)Display of PersonTypes1" +
-        "\n19)Display of PersonsDetail_Type1\n20)Display of Employee_Department1\n21)Display Of Contacts by City using Inner Join" +
-        "\n22)Display Of count of  Contacts by City\n23)Display Of Contacts alphabetically order by Firstname\n24)Display count of Contacts by type");
+        "\n19)Display of PersonsDetail_Type1\n20)Display of Employee_Department1");
     int option = Convert.ToInt16(Console.ReadLine());
     switch (option)
     {
@@ -153,31 +152,6 @@ while (true)
         case 20:
             Console.WriteLine("Display of Employee_Department1");
             repo.GetAllContactOf_Employee_Department1();
-            Console.WriteLine();
-            Console.WriteLine("*********************************************************");
-            break;
-        case 21:
-            Console.WriteLine("Display Of Contacts by City using Inner Join");
-            repo.GetContactsBasedOnCityStateByJoins();
-            Console.WriteLine();
-            Console.WriteLine("*********************************************************");
-            break;
-            break;
-        case 22:
-            Console.WriteLine("Display Of count of  Contacts by City");
-            repo.GetCountOfContactsByCity_PersonDetail1();
-            Console.WriteLine();
-            Console.WriteLine("*********************************************************");
-            break;
-        case 23:
-            Console.WriteLine("Display Of Contacts alphabetically order by Firstname");
-            repo.GetContactsInAlphabeticalOrderOfFirstNameByJoins();
-            Console.WriteLine();
-            Console.WriteLine("*********************************************************");
-            break;
-        case 24:
-            Console.WriteLine("Display count of Contacts by type");
-            repo.GetCountOfContactsByTypeByJoins();
             Console.WriteLine();
             Console.WriteLine("*********************************************************");
             break;
